@@ -1,36 +1,74 @@
+/* =========================================================
+   ESTILOS GENERALES – MODERNO, LIMPIO Y ADAPTADO A MÓVILES
+   Paleta base: Azul (#1f4ea3) + Azul claro (#e8f0ff)
+   ========================================================= */
+
 body {
-  font-family: Arial, sans-serif;
-  background: #e8f0ff;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(135deg, #d9e6ff, #eef4ff);
   padding: 20px;
   margin: 0;
+  color: #1a1a1a;
 }
 
+/* CONTENEDOR PRINCIPAL */
 #container {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
-  background: white;
+  background: #ffffff;
   padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.10),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.4s ease-in-out;
 }
 
+/* ANIMACIÓN SUAVE */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* TÍTULO */
 h1 {
   text-align: center;
   color: #1f4ea3;
-  margin-bottom: 10px;
+  font-size: 30px;
+  margin-bottom: 5px;
+  font-weight: 700;
 }
+
+p {
+  text-align: center;
+  color: #4d4d4d;
+  margin-bottom: 20px;
+}
+
+/* ---------------------------------------------------------
+   INPUTS Y BOTONES
+   --------------------------------------------------------- */
 
 .inputs {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 input, button {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #bcd0ff;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #bcd0ff;
+  font-size: 16px;
+  transition: 0.25s;
+}
+
+input:focus {
+  border-color: #1f4ea3;
+  outline: none;
+  box-shadow: 0 0 6px rgba(31, 78, 163, 0.4);
 }
 
 button {
@@ -38,59 +76,148 @@ button {
   color: white;
   border: none;
   cursor: pointer;
-  transition: 0.2s;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(31, 78, 163, 0.3);
 }
 
 button:hover {
   background: #163c82;
+  transform: translateY(-1px);
 }
 
+/* BOTÓN VER LISTA DE COMPRA */
 .comprar-btn {
   background: #27a327;
+  box-shadow: 0 4px 10px rgba(39, 163, 39, 0.3);
 }
 
 .comprar-btn:hover {
   background: #1f7f1f;
 }
 
+/* ---------------------------------------------------------
+   TABLA DE PRODUCTOS
+   --------------------------------------------------------- */
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+thead {
+  background: #1f4ea3;
 }
 
 th {
-  background: #1f4ea3;
+  padding: 12px;
   color: white;
-  padding: 10px;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  border-bottom: 1px solid #e0e7ff;
   text-align: center;
+  font-size: 15px;
 }
 
+tr:nth-child(even) {
+  background: #f4f6ff;
+}
+
+tr:hover {
+  background: #e9eeff;
+}
+
+/* IMAGEN DE PRODUCTOS */
 .product-img {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border: 2px solid #dce4ff;
 }
 
+/* BOTÓN ELIMINAR */
 .delete-btn {
   background: #d9534f;
   color: white;
-  padding: 6px 10px;
+  padding: 7px 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s;
+  box-shadow: 0 3px 8px rgba(217, 83, 79, 0.4);
 }
 
 .delete-btn:hover {
   background: #b5423f;
+  transform: translateY(-1px);
 }
+
+/* ---------------------------------------------------------
+   CLASE PARA OCULTAR FILAS
+   --------------------------------------------------------- */
 
 .hidden {
   display: none;
+}
+
+/* =========================================================
+   📱 RESPONSIVE – TELÉFONOS
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  body {
+    padding: 10px;
+  }
+
+  #container {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .inputs {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  input, button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  td, th {
+    padding: 9px;
+  }
+
+  .product-img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Ocultar columna de cantidad en pantallas MUY pequeñas */
+@media (max-width: 450px) {
+  th:nth-child(3),
+  td:nth-child(3) {
+    display: none;
+  }
 }
